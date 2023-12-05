@@ -70,6 +70,13 @@ int _printf(const char *format, ...)
 						buffer_index += len;
 						break;
 					}
+					case 'b': {
+            unsigned int num = va_arg(args, unsigned int);
+                    char buffer[32];  /*Assuming a 32-bit unsigned integer */
+                    int len = _itoa_binary(num, buffer);
+                    count += write(1, buffer, len);
+                    break;
+                }
 				case '%':
 					buffer[buffer_index++] = '%';
 					break;
